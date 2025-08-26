@@ -8,7 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions: write # this is for our deploy steps
+    permissions:
+      contents: write # this is for our deploy steps
 
     steps:
       - name: Checkout Repository
