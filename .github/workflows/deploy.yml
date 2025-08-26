@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # runs when the main branch is changed
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.19.1'
+
+      - name: Install and Build First TF Project
+        run: |
+          npm install
+          npm run build
+        working-directory: ../../projects/learning-tensorflowjs/first-proj/first-tensorflow-proj
+
+      - name: Install and Build Second TF Project
+        run: |
+          npm install
+          npm run build
+        working-directory: ../../projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs
+
+      - name: Deploy First TF Project
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ../../projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist
+
+      - name: Deploy Second TF Project
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ../../projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs/dist
+
