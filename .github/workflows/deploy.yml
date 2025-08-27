@@ -24,6 +24,12 @@ jobs:
 
       - name: Build Projects
         run: |
+          # build the homepage project
+          cd homepage/
+          npm install
+          npm run build
+          cd ../
+
           # build the first tensorflow project
           cd projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/
           npm install
@@ -48,7 +54,7 @@ jobs:
           mkdir gh-pages-temp
 
           # grab our homepage
-          cp index.html gh-pages-temp/
+          cp homepage/dist gh-pages-temp/
 
           # grab any of our vite apps
           cp -r projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist gh-pages-temp/tf-number-predictor
