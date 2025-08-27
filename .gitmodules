@@ -1,3 +1,6 @@
 [submodule "projects/learning-tensorflowjs"]
 	path = projects/learning-tensorflowjs
 	url = https://github.com/effluvialsplurf/learning-tensorflowjs.git
+[submodule "projects/threeJS-practice"]
+	path = projects/threeJS-practice
+	url = https://github.com/effluvialsplurf/threeJS-practice.git
