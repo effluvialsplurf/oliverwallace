@@ -28,21 +28,23 @@ jobs:
           npm run build
         working-directory: projects/learning-tensorflowjs/first-proj/first-tensorflow-proj
 
+      - name: Deploy First TF Project
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist
+          destination_dir: first-tf-project
+
       - name: Install and Build Second TF Project
         run: |
           npm install
           npm run build
         working-directory: projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs
 
-      - name: Deploy First TF Project
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist
-
       - name: Deploy Second TF Project
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs/dist
+          destination_dir: image-recognition-tf
 
