@@ -22,29 +22,36 @@ jobs:
         with:
           node-version: '18.19.1'
 
-      - name: Install and Build First TF Project
+      - name: Build Projects
         run: |
+          # build the first tensorflow project
+          cd projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/
           npm install
           npm run build
-        working-directory: projects/learning-tensorflowjs/first-proj/first-tensorflow-proj
+          cd ../../../..
 
-      - name: Deploy First TF Project
+          # second tensorflow project
+          cd projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs/
+          npm install
+          npm run build
+          cd ../../../..
+
+      - name: Prepare Deployment Dir
+        run: |
+          # make temp dir (we replace the contents of the gh-pages branch with the contents of the dir)
+          mkdir gh-pages-temp
+
+          # grab our homepage
+          cp index.html gh-pages-temp/
+
+          # grab any of our vite apps
+          cp -r projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist gh-pages-temp/tf-number-predictor
+          cp -r projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs/dist gh-pages-temp/tf-image-recognition
+
+      - name: Deploy temp dir to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist
-          destination_dir: first-tf-project
-
-      - name: Install and Build Second TF Project
-        run: |
-          npm install
-          npm run build
-        working-directory: projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs
-
-      - name: Deploy Second TF Project
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs/dist
-          destination_dir: image-recognition-tf
-
+          publish_dir: ./gh-pages-temp
+          destination_dir: ''
+          cname: ''
