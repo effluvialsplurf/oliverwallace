@@ -54,7 +54,7 @@ jobs:
           mkdir gh-pages-temp
 
           # grab our homepage
-          cp -r homepage/dist gh-pages-temp/
+          cp -r homepage/dist ./
 
           # grab any of our vite apps
           cp -r projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist gh-pages-temp/tf-number-predictor
