@@ -13,7 +13,7 @@ export default function HomepageBio() {
     const professionalLanguages = ['Python(Django)', 'JavaScript', 'TypeScript', '.net']
     const bioBrief = (
         <div className='flex flex-col text-2xl'>
-            <p className='text-3xl mb-2'>
+            <p className='text-2xl mb-2'>
                 I work on a full stack ecommerce platform, as well as several applications professionaly.<br />
                 Generally the languages I use professionally are:
             </p>
@@ -28,7 +28,7 @@ export default function HomepageBio() {
 
     return (
         <>
-            <div className='flex flex-col justify-between w-[96%] h-[50%] m-[4%]'>
+            <div className='flex flex-col justify-between'>
                 {welcomeMessage}
                 {bioBrief}
             </div>
