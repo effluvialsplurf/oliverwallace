@@ -5,7 +5,8 @@ export default function HomepageBio() {
                 Welcome!
             </h1>
             <p className='text-3xl'>
-                My name is Oliver, and I make stuff online :)
+                My name is Oliver, and I am passionate about Root Cause Analysis,
+                Machine Learning/Artificial Intelligence Integration, and Rapid Iteration towards well defined goals.
             </p>
         </div>
     )
@@ -21,14 +22,14 @@ export default function HomepageBio() {
                 {professionalLanguages.map((l, idx) => (<li key={idx}>{l}</li>))}
             </ul>
             <p className='mt-3'>
-                All of that code is hosted and run using AWS and Github.
+                All of that code is hosted and run using AWS and Github
             </p>
         </div>
     )
 
     return (
         <>
-            <div className='flex flex-col justify-between'>
+            <div className='flex flex-col justify-between w-[50%]'>
                 {welcomeMessage}
                 {bioBrief}
             </div>
