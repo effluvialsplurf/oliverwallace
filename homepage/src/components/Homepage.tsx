@@ -11,7 +11,7 @@ export default function Homepage() {
             <div className={`${siteUI} flex flex-row justify-between w-[96%] h-[50%] m-[4%] dark:bg-black`}>
                 <HomepageBio />
                 <HomepageNavCol />
-                <ThemeToggle />
+                <!-- <ThemeToggle /> -->
             </div >
         </>
     )
