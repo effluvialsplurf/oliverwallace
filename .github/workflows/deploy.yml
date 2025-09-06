@@ -48,6 +48,12 @@ jobs:
           npm run build
           cd ../../..
 
+          # utils stuff
+          cd projects/Utils/utils/
+          npm install
+          npm run build
+          cd ../../..
+
       - name: Prepare Deployment Dir
         run: |
           # make temp dir (we replace the contents of the gh-pages branch with the contents of the dir)
@@ -60,6 +66,7 @@ jobs:
           cp -r projects/learning-tensorflowjs/first-proj/first-tensorflow-proj/dist gh-pages-temp/tf-number-predictor
           cp -r projects/learning-tensorflowjs/second-proj-image-recognition/image-recognition-tensorflowjs/dist gh-pages-temp/tf-image-recognition
           cp -r projects/threeJS-practice/puzzler/dist gh-pages-temp/threeJS-practice
+          cp -r projects/Utils/utils/dist gh-pages-temp/utils
 
       - name: Deploy temp dir to gh-pages
         uses: peaceiris/actions-gh-pages@v3

@@ -4,3 +4,6 @@
 [submodule "projects/threeJS-practice"]
 	path = projects/threeJS-practice
 	url = https://github.com/effluvialsplurf/threeJS-practice.git
+[submodule "projects/Utils"]
+	path = projects/Utils
+	url = https://github.com/effluvialsplurf/Utils.git
