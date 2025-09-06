@@ -68,6 +68,11 @@ jobs:
           cp -r projects/threeJS-practice/puzzler/dist gh-pages-temp/threeJS-practice
           cp -r projects/Utils/utils/dist gh-pages-temp/utils
 
+      - name: Create CNAME file
+        run: |
+          # have to do this to make sure that my site is accessable with my custom domain
+          echo 'eeso.dev' > gh-pages-temp/CNAME
+
       - name: Deploy temp dir to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
